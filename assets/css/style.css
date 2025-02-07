@@ -10,13 +10,16 @@ html {
 body {
   font-size: 1.6rem;
   font-family: Lato, sans-serif;
+  background-image: url(../img/container_bg.png);
   /* height: 100%; */
 }
 .container {
   position: relative;
-  background-image: url(../img/container_bg.png);
   /* min-height: 100vh; */
-  height: 2000px;
+  width: 1024px;
+  max-width: calc(100% - 48px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homepage {
@@ -64,6 +67,13 @@ body {
   cursor: pointer;
 }
 
+/* -------------filter type------------------ */
+
+.filter {
+  text-align: end;
+  margin: 1% 13% 1%;
+}
+
 /* -------------poke-container--------------- */
 .poke-list {
   display: flex;
@@ -73,7 +83,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   width: 85%;
-  margin-left: 12%;
+  margin-left: auto;
 }
 
 .not-found-message {
@@ -98,7 +108,7 @@ body {
 }
 
 .pokemon-card img {
-  width: 16vw;
+  width: 150px;
   border-radius: 15px;
   background-color: #e0dada;
 }

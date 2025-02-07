@@ -1,16 +1,15 @@
-// const closeButton = document.getElementById("close");
-
 const popUp = document.querySelector(".pu-container");
+const loadAll = document.getElementById("load-all");
 
-document.getElementById("load-all").addEventListener("click", displayPokesList);
+loadAll.addEventListener("click", displayPokesList);
+loadAll.addEventListener("click", renderButtonType);
+
 document
   .getElementById("searching")
   .addEventListener("click", searchPokeByName);
 
 let allPokeData = [];
 let displayPokemon = [];
-let currentOffset = 0;
-const ITEMS_PER_PAGE = 20;
 
 async function fetchData(url) {
   try {
@@ -41,21 +40,6 @@ async function fetchAllPokemon() {
 
   return true;
 }
-
-// async function loadMorePokemon() {
-//   const success = await fetchAllPokemon();
-//   if (!success) return;
-
-//   const end = Math.min(currentOffset + ITEMS_PER_PAGE, displayedPokemon.length);
-//   const newPokemon = displayPokemon.slice(currentOffset, end);
-//   newPokemon.forEach(renderPokemonCard);
-//   currentOffset = end;
-
-//   // Hide load more button if we've shown all Pokemon
-//   if (currentOffset >= displayPokemon.length) {
-//     document.getElementById("load-more").style.display = "none";
-//   }
-// }
 
 async function displayPokesList() {
   const success = await fetchAllPokemon();
@@ -109,6 +93,57 @@ const renderPokemonCard = (pokemon) => {
   `;
   pokeListElement.appendChild(pokeCard);
 };
+
+// filter
+async function renderButtonType() {
+  const apiUrl = "https://pokeapi.co/api/v2/type";
+  const types = await fetchData(apiUrl);
+  if (!types) return false;
+
+  const typeList = document.querySelector(".filter");
+
+  typeList.innerHTML = `
+    <label for="type" class="filter-label">Category</label>
+    <select name="type" id="filter-type" class="select-type">
+      ${types.results
+        .slice()
+        .map(
+          (type) => `
+            <option value="${type.name}">${capitalizeFirstLetter(
+            type.name
+          )}</option>
+          `
+        )
+        .join("")}
+    </select>
+  `;
+  document
+    .querySelector(".select-type")
+    .addEventListener("change", filterByType);
+}
+
+async function filterByType(event) {
+  const success = await fetchAllPokemon();
+  if (!success) return;
+
+  const selectValue = event.target.value;
+
+  displayPokemon = allPokeData.filter((pokemon) => {
+    return pokemon.types.some((t) => t.type.name === selectValue);
+  });
+
+  // xoa list r render lai
+  pokeListElement.innerHTML = "";
+  if (displayPokemon.length === 0) {
+    pokeListElement.innerHTML = `
+      <div class="not-found-message">
+        <h2>There are no Pokémon of this type</h2>
+      </div>
+      `;
+  } else {
+    displayPokemon.forEach(renderPokemonCard);
+  }
+}
 
 // show info details
 document.querySelector(".poke-list").addEventListener("click", (event) => {
