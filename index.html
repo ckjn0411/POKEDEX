@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="homepage">
+        <div class="title">
+          <h1>Pokédex</h1>
+        </div>
+        <div class="searching">
+          <input
+            type="text"
+            class="search-poke"
+            placeholder="Enter Pokémon name or ID"
+          />
+          <button class="btn btn-search">
+            <img
+              id="searching"
+              class="icon-search"
+              src="./assets/img/icons8-search.svg"
+              alt="search"
+            />
+          </button>
+        </div>
+        <button class="btn" id="load-all">Load All Pokémon</button>
+      </div>
+
+      <div class="poke-list" id="list">
+        <!-- <div class="not-found-message">
+          <h2>No Pokémon found</h2>
+        </div> -->
+        <!-- <div class="pokemon-card">
+          <img src="./assets/img/001.png" alt="${pokemon.name}" />
+          <p>abc</p>
+          <h3>acb</h3>
+          <div class="types">
+            <span class="type fighting">grass</span>
+          </div>
+        </div> -->
+      </div>
+      <div class="pop-up">
+        <div class="pu-container">
+          <!-- <div class="info-block">
+            <div class="block-top">
+              <img src="./assets/img/001.png" alt="" />
+            </div>
+            <div class="block-bottom">
+              <div class="info">
+                <p class="id">#001</p>
+                <p class="name">aggg</p>
+              </div>
+
+              <div class="stats">
+                <div class="row-top">
+                  <div class="stat hp">
+                    <div class="stat-title">Special-attack</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                  <div class="stat attack">
+                    <div class="stat-title">HP</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                  <div class="stat defense">
+                    <div class="stat-title">HP</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                </div>
+                <div class="row-bt">
+                  <div class="stat hp">
+                    <div class="stat-title">Hp</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                  <div class="stat attack">
+                    <div class="stat-title">Attack</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                  <div class="stat defense">
+                    <div class="stat-title">HP</div>
+                    <div class="stat-value">30</div>
+                  </div>
+                </div>
+              </div>
+              <div class="info-more">
+                <div class="weight">
+                  <span>Weight:</span>
+                  <span style="font-weight: 500">20</span>
+                </div>
+                <div class="types">
+                  <p style="margin: 1.2rem 0 0.8rem">Type</p>
+                  <span
+                    class="type fighting"
+                    style="font-size: 1.6rem; font-weight: 400"
+                    >grass</span
+                  >
+                  <span
+                    class="type bug"
+                    style="font-size: 1.6rem; font-weight: 400"
+                    >ice</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="close">
+            <button id="close" >
+              <img src="./assets/img/close.png" alt="" />
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
