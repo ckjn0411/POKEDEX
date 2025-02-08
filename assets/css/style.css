@@ -88,6 +88,7 @@ body {
   border: none;
   margin: 1.5625%;
   padding: 0.75em 1.25em 0.675em;
+  color: #333;
   background-color: #e5d7f3;
   transition: 0.5s;
 }
@@ -436,7 +437,8 @@ select option {
 }
 
 /* ----------responsive------ */
-@media (max-width: 768px) {
+
+@media (max-width: 500px) {
   .btn-search {
     width: 30px;
     height: 30px;
@@ -449,11 +451,13 @@ select option {
 
   .info-block img {
     width: 60%;
-    left: 25%;
-    top: 8%;
+    left: 22%;
+    top: 4%;
   }
   .pu-container {
-    height: 685px;
+    width: 80%;
+    left: 10%;
+    height: 485px;
     z-index: -1;
     border-radius: 15px;
     background: radial-gradient(
@@ -469,13 +473,7 @@ select option {
     font-size: 3rem;
     font-weight: 500;
     z-index: 4;
-  }
-
-  .stats {
-    flex: 1 1 calc(50% - 10px); /* Two columns */
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+    margin-top: -20%;
   }
 
   .row-top,
@@ -491,16 +489,9 @@ select option {
     flex: 1;
   }
 
-  .block-bottom {
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: flex-end;
-    font-size: 2rem;
-    font-weight: 400;
-  }
-
   .info-more {
-    margin-top: 50px;
+    width: 10%;
+    margin-top: 20px;
   }
 
   .block-bottom .types {
@@ -508,8 +499,65 @@ select option {
   }
 
   .button-radio {
-    top: 15%;
-    right: 40%;
+    top: 22%;
+    right: 43%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 620px) {
+  .info-block img {
+    width: 60%;
+    left: 22%;
+    top: -3%;
+  }
+  .pu-container {
+    width: 80%;
+    left: 10%;
+    height: 485px;
+    z-index: -1;
+    border-radius: 15px;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgb(234 241 253 / 99%) 40%,
+      rgb(145, 174, 215) 0%,
+      rgb(123, 140, 205) 75%,
+      rgb(194, 185, 230) 100%
+    );
+  }
+
+  .info-block .info .name {
+    font-size: 3rem;
+    font-weight: 500;
+    z-index: 4;
+    margin-top: -8%;
+  }
+
+  .row-top,
+  .row-bt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .row-top div,
+  .row-bt div {
+    flex: 1;
+  }
+
+  .info-more {
+    width: 10%;
+    margin-top: 20px;
+  }
+
+  .block-bottom .types {
+    width: 120px;
+  }
+
+  .button-radio {
+    top: 22%;
+    right: 43%;
     display: flex;
     justify-content: center;
   }
