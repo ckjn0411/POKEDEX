@@ -1,8 +1,15 @@
 const popUp = document.querySelector(".pu-container");
 const loadAll = document.getElementById("load-all");
 
-loadAll.addEventListener("click", displayPokesList);
-loadAll.addEventListener("click", renderButtonType);
+loadAll.addEventListener("click", async () => {
+  const loadingElement = document.getElementById("loading");
+
+  loadingElement.style.display = "block";
+  await displayPokesList();
+  renderButtonType();
+  loadingElement.style.display = "none";
+});
+// loadAll.addEventListener("click", renderButtonType);
 
 document
   .getElementById("searching")
@@ -165,13 +172,24 @@ document.querySelector(".poke-list").addEventListener("click", (event) => {
   if (card) {
     const pokeId = card.dataset.id;
     const pokemon = allPokeData.find((poke) => poke.id == pokeId);
+
     if (pokemon) {
       const popUp = document.querySelector(".pu-container");
       popUp.classList.add("open");
+
+      const sprites = {
+        front: pokemon.sprites.front_default,
+        back: pokemon.sprites.back_default,
+      };
+
       popUp.innerHTML = `
   <div class="info-block">
     <div class="block-top">
-      <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+      <img src="${sprites.front}" alt="${pokemon.name}" class="pokemon-sprite"/>
+      <div class="button-radio">
+        <input class="btn-sprite" type="radio" name="show-img" value="front" checked/>
+        <input class="btn-sprite" type="radio" name="show-img" value="back" />
+      </div>
     </div>
     <div class="block-bottom">
       <div class="info">
@@ -232,6 +250,16 @@ document.querySelector(".poke-list").addEventListener("click", (event) => {
       <img src="./assets/img/close.png" alt="" />
   </button>
 `;
+
+      const radioButtons = popUp.querySelectorAll('input[name="show-img"]');
+      const spriteImage = popUp.querySelector(".pokemon-sprite");
+
+      radioButtons.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+          const view = e.target.value;
+          spriteImage.src = sprites[view];
+        });
+      });
     }
   }
 });

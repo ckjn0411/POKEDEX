@@ -37,9 +37,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .search-poke {
+  position: relative;
   margin: 1rem;
   width: 51vw;
   height: 50px;
@@ -49,22 +53,47 @@ body {
   box-shadow: #313131 2px 2px 4px;
 }
 
-.search-poke:active {
+.search-poke:focus {
   outline: none;
 }
 
 .btn-search {
+  position: absolute;
+  right: 18%;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: none;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.btn-search:hover {
+  background: #f0f0f0;
+}
 .icon-search {
   width: 29px;
 }
 
 .btn {
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+#load-all {
+  font-size: 1.6rem;
+  border-radius: 5px;
+  border: none;
+  margin: 1.5625%;
+  padding: 0.75em 1.25em 0.675em;
+  background-color: #e5d7f3;
+  transition: 0.5s;
+}
+
+#load-all:hover {
+  background-color: #bd9ce6;
 }
 
 /* -------------filter type------------------ */
@@ -72,6 +101,29 @@ body {
 .filter {
   text-align: end;
   margin: 1% 13% 1%;
+}
+
+.select-type {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.6rem;
+  border: 2px solid #bab7bc;
+  border-radius: 8px;
+  background: #f7f9fc;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: #e5d7f3;
+  box-shadow: 0 0 6px rgba(92, 115, 201, 0.5);
+}
+
+select option {
+  font-size: 1.6rem;
+  padding: 10px;
 }
 
 /* -------------poke-container--------------- */
@@ -161,9 +213,9 @@ body {
   border-radius: 15px;
   background: radial-gradient(
     circle at 50% 0%,
-    rgb(149, 175, 192) 50%,
-    rgb(225, 204, 245) 50%,
-    rgb(212, 198, 235) 75%,
+    rgb(234 241 253 / 99%) 50%,
+    rgb(145, 174, 215) 50%,
+    rgb(123, 140, 205) 75%,
     rgb(194, 185, 230) 100%
   );
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
@@ -283,6 +335,44 @@ body {
   transform: scale(0.85);
 }
 
+/* --------loading------- */
+.loading-spinner {
+  font-size: 20px;
+  text-align: center;
+  margin: 10px 0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------radio--------- */
+.button-radio {
+  position: absolute;
+  bottom: 40%;
+  right: 46%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-radio input {
+  border: 2px solid #40d3dc;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+  outline: none;
+}
+
+.btn-sprite:hover {
+  background: #40d3dc;
+}
 /* Type colors */
 .type.grass {
   background: #9bcc50;
@@ -343,4 +433,84 @@ body {
 .type.dragon {
   background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
   background-color: #53a4cf;
+}
+
+/* ----------responsive------ */
+@media (max-width: 768px) {
+  .btn-search {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    right: 21.7%;
+  }
+  .poke-list {
+    margin-left: 18.5%;
+  }
+
+  .info-block img {
+    width: 60%;
+    left: 25%;
+    top: 8%;
+  }
+  .pu-container {
+    height: 685px;
+    z-index: -1;
+    border-radius: 15px;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgb(234 241 253 / 99%) 40%,
+      rgb(145, 174, 215) 0%,
+      rgb(123, 140, 205) 75%,
+      rgb(194, 185, 230) 100%
+    );
+  }
+
+  .info-block .info .name {
+    font-size: 3rem;
+    font-weight: 500;
+    z-index: 4;
+  }
+
+  .stats {
+    flex: 1 1 calc(50% - 10px); /* Two columns */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .row-top,
+  .row-bt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .row-top div,
+  .row-bt div {
+    flex: 1;
+  }
+
+  .block-bottom {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  .info-more {
+    margin-top: 50px;
+  }
+
+  .block-bottom .types {
+    width: 120px;
+  }
+
+  .button-radio {
+    top: 15%;
+    right: 40%;
+    display: flex;
+    justify-content: center;
+  }
 }
