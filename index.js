@@ -8,6 +8,12 @@ document
   .getElementById("searching")
   .addEventListener("click", searchPokeByName);
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    searchPokeByName();
+  }
+});
+
 let allPokeData = [];
 let displayPokemon = [];
 
@@ -54,9 +60,17 @@ async function searchPokeByName() {
   if (!success) return;
 
   let inputValue = document.querySelector(".search-poke").value.toLowerCase();
+  // console.log(inputValue);
+
   // tìm
+  if (inputValue === "") {
+    renderButtonType();
+  }
   displayPokemon = allPokeData.filter((pokemon) => {
-    return pokemon.name.toLowerCase().includes(inputValue);
+    return (
+      pokemon.name.toLowerCase().includes(inputValue) ||
+      pokemon.id.toString() === inputValue
+    );
   });
   // xoa list r render lai
   pokeListElement.innerHTML = "";
